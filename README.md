@@ -24,13 +24,26 @@
 
 ### 1. 数据预处理流水线
 我们提出了一种语义引导的边缘提取策略：
-$$ E_{arch} = E \odot G $$
-其中 $E$ 为原始边缘，$G$ 为仅包含建筑区域的门控掩码。
+$$
+E_{\text{arch}} = E \odot G
+$$
+
+其中，$E$ 表示原始边缘图，$G$ 表示空间引导掩码（guidance mask），$\odot$ 表示逐元素相乘（Hadamard product）。
 ![Pipeline](pipeline_chart.png)
 
 ### 2. 模型架构与 RAWL
 基于 Stable Diffusion v1.5 + ControlNet，引入自定义损失函数：
-$$ \mathcal{L}_{ours} = \mathbb{E} \left[ \frac{\sum_{i,j} W_{i,j} \cdot \|\epsilon_{i,j} - \epsilon_{\theta,i,j}\|_2^2}{\sum_{i,j} W_{i,j} + \varepsilon} \right] $$
+$$
+\mathcal{L}_{\text{ours}} =
+\mathbb{E}\left[
+\frac{
+\sum_{i,j} W_{i,j} \cdot
+\left\lVert \epsilon_{i,j} - \epsilon_{\theta,i,j} \right\rVert_2^2
+}{
+\sum_{i,j} W_{i,j} + \varepsilon
+}
+\right]
+$$
 ![Architecture](architecture_diagram.png)
 
 ## 📊 实验结果 (Results)
