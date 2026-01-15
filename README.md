@@ -27,13 +27,11 @@
 $$ E_{arch} = E \odot G $$
 其中 $E$ 为原始边缘，$G$ 为仅包含建筑区域的门控掩码。
 ![Pipeline](pipeline_chart.png)
-*(注：建议在此处放置报告中的 **图5：融合算法流程图**)*
 
 ### 2. 模型架构与 RAWL
 基于 Stable Diffusion v1.5 + ControlNet，引入自定义损失函数：
 $$ \mathcal{L}_{ours} = \mathbb{E} \left[ \frac{\sum_{i,j} W_{i,j} \cdot \|\epsilon_{i,j} - \epsilon_{\theta,i,j}\|_2^2}{\sum_{i,j} W_{i,j} + \varepsilon} \right] $$
 ![Architecture](architecture_diagram.png)
-*(注：建议在此处放置报告中的 **图9：结合 ControlNet 与 RAWL 的改进方法**)*
 
 ## 📊 实验结果 (Results)
 
@@ -46,7 +44,6 @@ $$ \mathcal{L}_{ours} = \mathbb{E} \left[ \frac{\sum_{i,j} W_{i,j} \cdot \|\epsi
 
 ![Visualization](J1.png)
 ![Visualization](J2.png)
-*(注：建议在此处放置报告中的 **图10：可视化结果部分展示**)*
 
 ## 🛠️ 安装与使用 (Installation & Usage)
 
@@ -57,8 +54,7 @@ $$ \mathcal{L}_{ours} = \mathbb{E} \left[ \frac{\sum_{i,j} W_{i,j} \cdot \|\epsi
 
 ### 1. 克隆仓库与安装依赖
 ```bash
-git clone https://github.com/your-username/your-repo-name.git
-cd your-repo-name
+git clone https://github.com/ljf-bit/DL-SD-controlnet.git
 
 # 推荐使用 conda 创建环境和添加依赖
 conda env create -f environment.yaml
